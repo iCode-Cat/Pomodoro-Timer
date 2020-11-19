@@ -7,29 +7,26 @@ const breakShort = document.querySelector('.p5');
 const breakLong = document.querySelector('.p15');
 
 //Default Options
-let minute = 24;
-let second = 60;
-
+let minute = 25;
+let second = 00;
+fStart()
 
 
 //Start and Pause the function.  
 let go = false;
 let stop = false;
+let breakS = false;
 
-pomodoro25.addEventListener('click' , ()=>{
-    
-    minute = 4;
-    second = 60;
-    clock.innerText = `${minute}:${second}`
+//
+breakShort.addEventListener('click' , ()=>{
+    minute = 5;
+    second = 00;
+    clock.innerText = `${minute}:${second}${'0'}`
     go = false;
 })
 //When user click start, go turns true, functions start or continue.
 start.addEventListener('click', () => {
     go = true;
-    if(!stop){
-        fStart(minute,second)
-    }
-    stop = true;
     
 })
 //Pause stops function. It can continue by clicking start button.
@@ -38,19 +35,18 @@ pause.addEventListener('click', () => {
 })
 
 //Call the function.
-
-
-function fStart(minutes,seconds) {
+function fStart() {
     //Check every one second. 
     setInterval(() => {
 
         if (go) {
-            if (seconds == 0) {
-                seconds = 60
-                minutes--
+            if (second == 0) {
+                second = 60
+                minute--
             }
-            seconds--
-            clock.innerText = `${minutes}:${seconds}`
+            second--
+            clock.innerText = `${minute}:${second}`
         }
     }, 1000);
 }
+
