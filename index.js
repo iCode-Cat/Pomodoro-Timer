@@ -59,7 +59,9 @@ function fStart() {
         if(minute == 0 && second == 00) {
             go = false;
             if(play) {
-                playRing()
+                setTimeout(() => {
+                    playRing()
+                }, 2000);
             }
             
         }
